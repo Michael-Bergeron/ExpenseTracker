@@ -1,22 +1,36 @@
-import React from 'react';
-import { Collapsible, CollapsibleItem } from 'react-materialize';
+import React, { useState } from 'react';
+import { Collapsible, CollapsibleItem, Button, Dropdown } from 'react-materialize';
 
 export default function Details(props) {
+  const [month, setMonth] = useState('August 2019');
   return (
-    <div>
+    <div className = 'container'>
+      <div style = {{position: 'absolute', left: '-50px', top: '235px'}}>
+        <Dropdown trigger = {<Button style = {{position: 'relative', left: '110px', backgroundColor: '#022d64'}}>{month}</Button>}>
+          {props.monthlyTotals.labels.map((month) => 
+          <a style = {{color: '#022d64'}} onClick = {(e) => setMonth(month)}>{month}</a>
+          )}
+        </Dropdown>
+      </div>
       <Collapsible accordion={false}>
         {props.data[0].categories.map((item, index) => 
         <>
-          <CollapsibleItem header = {`Category: ${item} ---------Total Expenses: ${props.data[0].amounts[index]}`}>
-            {props.currentDetails['August 2019'][item] ? (
+          <CollapsibleItem onSelect={()=>{}} header = {`${item}`}>
+            {props.currentDetails[month][item] ? (
               <>
-              {props.currentDetails['August 2019'][item].map((detail) => 
+              {props.currentDetails[month][item].map((detail, index2) => 
               <>
-                <p>Name of Expense: {detail[0]} ------ Price of Expense: {detail[1]}</p>
+                <p style={{paddingLeft: '50px'}}>Name of Expense: {detail[0]}
+                  <span style = {{position: 'absolute', left: '60%'}}>${detail[1]}</span>
+                  <img onClick = {() => props.deleteItem(month, detail[0], detail[1], item, index2)} className = 'deleteicon' style = {{position: 'absolute', left: '80%'}} height = '15' src="./assets/trashcan.png"/>
+                </p>
               </>
             )}
               </>
             ) : (<></>)}
+            <p style={{paddingLeft: '50px'}}>
+              <span style = {{position: 'absolute', left: '54%'}}>Total Spent: ${props.data[props.data.length - 1].amounts[index]}</span>
+            </p>
           </CollapsibleItem>
         </>
         )}
