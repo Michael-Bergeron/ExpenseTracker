@@ -158,7 +158,8 @@ const newAccount = (creds, cookie, cb) => {
         let newUser = new userList({
           username: creds.username,
           cookie: cookie,
-          password: hash
+          password: hash,
+          budget: 3500
         })
         newUser.save(() => cb('Logged In'))
       });

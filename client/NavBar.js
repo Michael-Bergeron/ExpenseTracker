@@ -17,6 +17,9 @@ export default function NavBar(props) {
         <NavItem style = {{backgroundColor: props.page === 'Comparison' ? '#696969' : 'black'}} className = 'navbarLink' onClick = {()=> props.changePage('Comparison')}>
           Comparison
         </NavItem>
+        <NavItem style = {{backgroundColor: props.page === 'Comparison' ? '#696969' : 'black'}} className = 'navbarLink' onClick = {()=> props.changePage('Budget')}>
+          Budget
+        </NavItem>
         <NavItem style = {{position: 'absolute', left: '90%'}} onClick = {()=> props.logout()}>
           Logout
         </NavItem>

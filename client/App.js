@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Details from './Details'
 import axios from 'axios';
 import Comparison from './Comparison.js';
+import Budget from './Budget.js'
 
 export default class App extends Component {
   constructor(props){
@@ -28,7 +29,7 @@ export default class App extends Component {
       categories: ['House Bills', 'Car Bills', 'Eating Out', 'Groceries', 'Tech Purchases', 'Entertainement', 'Education', 'Shopping', 'Other'],
       data: [{}],
       comparison: {},
-      budget: 3000,
+      budget: 3500,
       months: ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"]
     }
   }
@@ -230,7 +231,10 @@ export default class App extends Component {
               changeDate = {this.changeDate.bind(this)} 
               handleNameChange = {this.handleNameChange.bind(this)}
               date = {this.state.date} />
-            <Graphs yearData = {this.state.yearData} data = {this.state.data} monthlyTotals = {this.state.monthlyTotals}/>
+            <Graphs yearData = {this.state.yearData} 
+                    data = {this.state.data} 
+                    monthlyTotals = {this.state.monthlyTotals}
+            />
           </>) : (<></>)}
           {this.state.page === 'Comparison' ? (<>
           <Comparison comparison = {this.state.comparison} submitComparison={this.submitComparison.bind(this)} />
@@ -243,6 +247,11 @@ export default class App extends Component {
                 monthlyTotals = {this.state.monthlyTotals}
               />
             </>) : (<></>)}
+          {this.state.page === 'Budget' ? (
+            <Budget 
+              budget = {this.state.budget}
+            />
+          ) : (<></>)}
         </>)}
       </>
     )
