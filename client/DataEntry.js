@@ -20,7 +20,7 @@ export default function DataEntry(props) {
           <div className = 'col 1'></div>
           <div  style = {{paddingTop: '20px'}} className = 'center'>
             <Dropdown trigger = {<Button style = {{backgroundColor: '#022d64'}}>{category}</Button>}>
-              {props.categories.map((item) => <a style = {{color: '#022d64'}} key = {item} onClick = {(e) => setCategory(e.target.innerHTML)}>{item}</a>)}
+              {props.categories.map((item) => <a style = {{color: '#022d64'}} key = {item} onClick = {(e) => setCategory(item)}>{item}</a>)}
             </Dropdown>
           </div>
           <div className = 'center'></div>
@@ -28,7 +28,7 @@ export default function DataEntry(props) {
             <input style = {{position: 'relative', top: '20px'}} onChange = {(e)=>props.changeDate(e)} type="month" value = {props.date}></input>
           </div>
           <div style = {{paddingTop: '40px'}} className = 'center'>
-            <Button style = {{backgroundColor: '#022d64'}} onClick = {() => {props.submitExpense(name, amount, category)}}>Submit</Button>
+            <Button style = {{backgroundColor: '#022d64'}} onClick = {() => props.submitExpense(name, amount, category)}>Submit</Button>
           </div>
         </div>
       </div>

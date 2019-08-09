@@ -94,8 +94,6 @@ export default class App extends Component {
       newData.reverse();
       monthlyTotals.data.reverse();
       monthlyTotals.labels.reverse();
-      console.log('data', newData)
-      console.log('currentDetails', currentDetails)
       this.setState({data: newData, currentDetails, yearData, monthlyTotals})
     })
   }
@@ -111,11 +109,13 @@ export default class App extends Component {
   }
 
   submitExpense(name, amount, category) {
-    if (this.state.newExpense.category !== 'Category'){
+    console.log(category)
+    if (category !== 'Category'){
       let {newExpense, login} = this.state;
       newExpense.name = name;
       newExpense.amount = amount;
       newExpense.category = category;
+      console.log(newExpense)
       axios.post('/newExpense', {login, newExpense})
       .then((response) => {
         newExpense.amount = 0;
