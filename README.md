@@ -21,8 +21,7 @@ SmartMoney was built primarily with ReactJS on the front end and Node/Express on
 <img src="https://lh5.googleusercontent.com/_RcI-sgNRX5J0olXzRycjQN3tysoTXbH8kXRfE0AtBY8KkDrINApsrfZGAkczZYGwKTPZlYdJXQyKmWO4zFzvON9Op6Ovcu0GQxwabxWfGJH__oRB6YCC-qD_3b2yj_efkprD8UP" width="100" />
 <img src="https://lh5.googleusercontent.com/rdAoVdYKOCnmtev6t7DJrEY7mG4iYsRPqeTH0Z-OrlsVmiea3q5SMtOGNSa7HzJcyxcIcelTacG5gPNgyBoIviiNcLbohQAicvpldcfM32Klb_ewouDRd67OtYhUAU1CEZB4rBqB" width="100" />
 <img src="https://lh6.googleusercontent.com/tKlT8lGB2bTDqSilr_a2y8vaO-QBUdcUIYASnslf-RAKTxUEiEBq-_gTVBP0irIP1ZWNuSvp1fouOJrQBXUr0joVmBZzNyOec4jBpOyVogPZMOYhPH6YQwYOiLdZnfuaDnFel9rn" width="100" />
-<img src="readme/assets/mongodb-logo-rgb-j6w271g1xn.jpg" width="100"/>
-<img src="readme/assets/mongoose.jpg" width="100">
+<img src="https://www.computing.co.uk/w-images/10398b94-833a-4596-a955-f4e351b1998f/0/mongodblogo-580x358.png" width="100"/>
 <img src="https://1stwebdesigner.com/wp-content/uploads/2016/05/chart-thumb.jpg" width="100">
 
 ### Technical Challenges/Research
