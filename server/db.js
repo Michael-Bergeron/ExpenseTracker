@@ -304,7 +304,7 @@ const checkCookie = (cookie, cb) => {
   userList.find({cookie})
   .then((data) => {
     if (data.length === 0) {
-      cb({username: '', budget: 3500});
+      cb({username: ''});
       return;
     } else {
       cb({username: data[0].username, budget: data[0].budget})
