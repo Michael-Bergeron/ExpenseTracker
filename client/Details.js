@@ -29,7 +29,11 @@ export default function Details(props) {
               </>
             ) : (<></>)}
             <p style={{paddingLeft: '50px'}}>
-              <span style = {{position: 'absolute', left: '54%'}}>Total Spent: ${props.data[props.data.length - 1].amounts[index]}</span>
+              {props.data.map((newMonth) => 
+                <>
+                {newMonth.date === month ? (<span style = {{position: 'absolute', left: '54%'}}>Total Spent: ${newMonth.amounts[index]}</span>) : (<></>)}
+                </>
+              )}
             </p>
           </CollapsibleItem>
         </>

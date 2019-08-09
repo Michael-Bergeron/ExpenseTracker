@@ -94,6 +94,8 @@ export default class App extends Component {
       newData.reverse();
       monthlyTotals.data.reverse();
       monthlyTotals.labels.reverse();
+      console.log('data', newData)
+      console.log('currentDetails', currentDetails)
       this.setState({data: newData, currentDetails, yearData, monthlyTotals})
     })
   }
