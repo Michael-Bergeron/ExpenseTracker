@@ -192,7 +192,7 @@ const checkCookie = (cookie, cb) => {
       cb('');
       return;
     } else {
-      cb(data[0].username)
+      cb({username: data[0].username, budget: data[0].budget})
     }
   })
 }
@@ -202,4 +202,9 @@ const deleteItem = (date, name, amount, cb) => {
   .then((res) => cb(res))
 }
 
-module.exports = { newExpense, getAll, newAccount, login, checkCookie, deleteItem }
+const submitBudget = (budget, username, cb) => {
+  userList.update({username}, {budget})
+  .then((res) => cb(res))
+}
+
+module.exports = { newExpense, getAll, newAccount, login, checkCookie, deleteItem, submitBudget }

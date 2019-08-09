@@ -8,7 +8,7 @@ export default function Details(props) {
       <div style = {{position: 'absolute', left: '-50px', top: '235px'}}>
         <Dropdown trigger = {<Button style = {{position: 'relative', left: '110px', backgroundColor: '#022d64'}}>{month}</Button>}>
           {props.monthlyTotals.labels.map((month) => 
-          <a style = {{color: '#022d64'}} onClick = {(e) => setMonth(month)}>{month}</a>
+          <a key = {month} style = {{color: '#022d64'}} onClick = {(e) => setMonth(month)}>{month}</a>
           )}
         </Dropdown>
       </div>

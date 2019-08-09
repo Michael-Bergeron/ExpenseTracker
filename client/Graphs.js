@@ -8,7 +8,7 @@ export default function Graphs(props) {
   const [timeFrame, setTimeFrame] = useState('Month')
   return (
     <div className = 'container-fluid'>
-      <div className='card' style = {{position: 'absolute', top: '220px', left: '450px', width: '340px', height: '500px', padding: '20px'}}>
+      <div className='card' style = {{position: 'absolute', top: '200px', left: '450px', width: '340px', height: '500px', padding: '20px'}}>
         <div style = {{paddingBottom: '20px'}}>
           <Dropdown trigger = {<Button style = {{position: 'relative', left: '110px', backgroundColor: '#022d64'}}>{timeFrame}</Button>}>
             <a style = {{color: '#022d64'}} onClick = {(e) => setTimeFrame('Month')}>Month</a>

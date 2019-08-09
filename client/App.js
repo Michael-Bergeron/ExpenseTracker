@@ -8,6 +8,7 @@ import Details from './Details'
 import axios from 'axios';
 import Comparison from './Comparison.js';
 import Budget from './Budget.js'
+import Footer from './Footer.js'
 
 export default class App extends Component {
   constructor(props){
@@ -37,8 +38,9 @@ export default class App extends Component {
   componentDidMount() {
     axios.get('/checkCookie')
     .then((data) => {
-      this.setState({login: data.data})
-      this.getAllItems(data.data);
+      console.log(data)
+      this.setState({login: data.data.username, budget: data.data.budget})
+      this.getAllItems(data.data.username);
     })
   }
 
@@ -96,24 +98,22 @@ export default class App extends Component {
     })
   }
 
-  categoryPicker(e) {
-    let {newExpense} = this.state;
-    newExpense.category = e.target.innerHTML;
-    this.setState({newExpense});
-  }
-
   deleteItem(date, name, price, cat, index) {
     axios.post('/deleteItem', {date, name, price})
     .then(()=> {
       let { currentDetails } = this.state;
       currentDetails[date][cat].splice(index, 1);
+      this.getAllItems(this.state.login)
       this.setState({currentDetails})
     })
   }
 
-  submitExpense() {
+  submitExpense(name, amount, category) {
     if (this.state.newExpense.category !== 'Category'){
       let {newExpense, login} = this.state;
+      newExpense.name = name;
+      newExpense.amount = amount;
+      newExpense.category = category;
       axios.post('/newExpense', {login, newExpense})
       .then((response) => {
         newExpense.amount = 0;
@@ -121,18 +121,6 @@ export default class App extends Component {
         this.getAllItems(this.state.login)
         this.setState({newExpense})})
     }
-  }
-
-  handleAmountChange(e) {
-    let {newExpense} = this.state;
-    newExpense.amount = e.target.value;
-    this.setState({newExpense})
-  }
-
-  handleNameChange(e) {
-    let {newExpense} = this.state;
-    newExpense.name = e.target.value;
-    this.setState({newExpense})
   }
 
   changeDate(e) {
@@ -166,6 +154,11 @@ export default class App extends Component {
       }
     })
   }
+  }
+
+  submitBudget(budget) {
+    axios.post('/submitBudget', {budget, username: this.state.login})
+    .then((res) => this.setState({budget}))
   }
 
   newAccount(username, password) {
@@ -215,21 +208,22 @@ export default class App extends Component {
     return (
       <>
       {this.state.login == '' ? (<>
-      <Login newAccount = {this.newAccount.bind(this)} login = {this.login.bind(this)} loginError = {this.state.loginError}/>
+      <Login newAccount = {this.newAccount.bind(this)} 
+             login = {this.login.bind(this)} 
+             loginError = {this.state.loginError}/>
       </>) : (
         <>
             <Header />
-            <NavBar changePage = {this.changePage.bind(this)} logout = {this.logout.bind(this)} page = {this.state.page}/>
+            <NavBar changePage = {this.changePage.bind(this)} 
+                    logout = {this.logout.bind(this)} 
+                    page = {this.state.page}/>
         {this.state.page === 'home' ? (
           <>
             <DataEntry 
               newExpense = {this.state.newExpense}
               categories = {this.state.categories}
-              categoryPicker = {this.categoryPicker.bind(this)}
               submitExpense = {this.submitExpense.bind(this)}
-              handleAmountChange = {this.handleAmountChange.bind(this)} 
               changeDate = {this.changeDate.bind(this)} 
-              handleNameChange = {this.handleNameChange.bind(this)}
               date = {this.state.date} />
             <Graphs yearData = {this.state.yearData} 
                     data = {this.state.data} 
@@ -250,6 +244,8 @@ export default class App extends Component {
           {this.state.page === 'Budget' ? (
             <Budget 
               budget = {this.state.budget}
+              monthlyTotals = {this.state.monthlyTotals}
+              submitBudget = {this.submitBudget.bind(this)}
             />
           ) : (<></>)}
         </>)}

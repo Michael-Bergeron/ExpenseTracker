@@ -53,7 +53,13 @@ app.get('/login', (req, res) => {
 
 app.post('/deleteItem', (req, res) => {
   db.deleteItem(req.body.date, req.body.name, req.body.price, () => {
-    res.send('success')
+    res.send('success');
+  })
+})
+
+app.post('/submitBudget', (req, res) => {
+  db.submitBudget(req.body.budget, req.body.username, () => {
+    res.send('success');
   })
 })
 

@@ -2,5 +2,10 @@
   cursor: pointer
 }
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #f2f1f1
+}
+
+.footerimage:hover {
+  cursor: pointer
 }
