@@ -1,6 +1,8 @@
 # SmartMoney
 
-placeholder for pictures and gifs
+<img src = './dist/assets/smartMoney1.gif'>
+<img src = './dist/assets/smartMoney2.gif'>
+<img src = './dist/assets/smartMoney3.gif'>
 
 ### About
 SmartMoney is a solo web application to create a website in two days. It is a way to track expenses month to month and year to year utilizing Chart.js. A user can login then see all of their expeses that they have entered. The opening portal is primarily focused on the current month and entering new data. There is an option to see the current year as well. Users can then go to the details page to see theh breakdown of purchases per category. They can also run a comparison report for any two months to see which categories were higher or lower. Lastly, the user can set their budget and track how close they are to going over for the current month.
